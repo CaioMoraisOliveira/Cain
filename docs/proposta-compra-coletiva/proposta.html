@@ -6,10 +6,13 @@
 <style>
   @page { size: A4; margin: 0; }
   :root {
-    --navy: #0B1F3A;
-    --navy-2: #13315C;
-    --accent: #F5A300;
-    --accent-soft: #FFF4DC;
+    --navy: #04408B;
+    --deep: #032B5E;
+    --green: #5E9A48;
+    --lime: #9CC730;
+    --navy-2: #0A4A96;
+    --accent: #5E9A48;
+    --accent-soft: #EEF6E6;
     --ink: #1C2533;
     --muted: #5B6676;
     --line: #E3E7EE;
@@ -20,20 +23,17 @@
   .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
   .page:last-child { page-break-after: auto; }
 
-  /* ===== Logo (provisória – substituir pela logo oficial da Pagcard) ===== */
-  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; }
-  .logo svg { display: block; }
-  .logo .word { font-size: 22px; }
-  .logo .word b { color: var(--accent); font-weight: 800; }
-  .logo.light { color: #fff; }
-  .logo.dark { color: var(--navy); }
+  /* ===== Logo ===== */
+  .logo-plate { display: inline-block; background: #fff; border-radius: 3mm; padding: 4mm 6mm; align-self: flex-start; }
+  .logo-plate img { height: 13mm; display: block; }
+  .header img { height: 8mm; display: block; }
 
   /* ===== Capa ===== */
-  .cover { background: var(--navy); color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; }
+  .cover { background: var(--deep); color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; }
   .cover::before { content: ""; position: absolute; right: -60mm; top: -40mm; width: 170mm; height: 170mm; border-radius: 50%; background: var(--navy-2); }
-  .cover::after { content: ""; position: absolute; right: 22mm; top: 62mm; width: 56mm; height: 56mm; border-radius: 50%; border: 10mm solid var(--accent); opacity: .9; }
+  .cover::after { content: ""; position: absolute; right: 22mm; top: 62mm; width: 56mm; height: 56mm; border-radius: 50%; border: 10mm solid var(--lime); opacity: .9; }
   .cover > * { position: relative; z-index: 1; }
-  .cover .kicker { margin-top: auto; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .cover .kicker { margin-top: auto; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); font-weight: 700; }
   .cover h1 { font-size: 50px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin: 6mm 0 6mm; max-width: 140mm; }
   .cover .lead { font-size: 16px; line-height: 1.5; color: #C9D3E3; max-width: 120mm; }
   .cover .foot { margin-top: 26mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.18); display: flex; justify-content: space-between; font-size: 11px; color: #9FB0C8; }
@@ -50,9 +50,9 @@
   p + p { margin-top: 3.5mm; }
   section + section { margin-top: 16mm; }
 
-  .mission { margin-top: 8mm; background: var(--navy); color: #fff; border-radius: 4mm; padding: 9mm 10mm; display: flex; gap: 8mm; align-items: flex-start; }
-  .mission .bar { width: 1.6mm; align-self: stretch; background: var(--accent); border-radius: 1mm; flex: none; }
-  .mission .label { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 2mm; }
+  .mission { margin-top: 8mm; background: var(--deep); color: #fff; border-radius: 4mm; padding: 9mm 10mm; display: flex; gap: 8mm; align-items: flex-start; }
+  .mission .bar { width: 1.6mm; align-self: stretch; background: var(--lime); border-radius: 1mm; flex: none; }
+  .mission .label { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--lime); font-weight: 700; margin-bottom: 2mm; }
   .mission p { color: #fff; font-size: 18px; line-height: 1.5; font-weight: 500; }
 
   .how { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; margin-top: 6mm; }
@@ -64,30 +64,30 @@
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
   .card { border: 1px solid var(--line); border-radius: 4mm; padding: 11mm 8mm; min-height: 150mm; }
   .card .icon { width: 11mm; height: 11mm; border-radius: 3mm; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 5mm; }
-  .card.navy { background: var(--navy); border-color: var(--navy); }
+  .card.navy { background: var(--deep); border-color: var(--deep); }
   .card.navy h3, .card.navy li { color: #fff; }
-  .card.navy .icon { background: rgba(245,163,0,.18); }
+  .card.navy .icon { background: rgba(156,199,48,.18); }
   .card .who { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 1.5mm; }
-  .card.navy .who { color: var(--accent); }
+  .card.navy .who { color: var(--lime); }
   ul.check { list-style: none; margin-top: 4mm; }
   ul.check li { position: relative; padding-left: 7mm; font-size: 14px; line-height: 1.55; margin-bottom: 5.5mm; }
-  ul.check li::before { content: ""; position: absolute; left: 0; top: 1.2mm; width: 3.6mm; height: 3.6mm; border-radius: 50%; background: var(--accent); }
-  ul.check li::after { content: ""; position: absolute; left: 1.15mm; top: 2.05mm; width: 1.2mm; height: .65mm; border-left: .45mm solid var(--navy); border-bottom: .45mm solid var(--navy); transform: rotate(-45deg); }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: 1.2mm; width: 3.6mm; height: 3.6mm; border-radius: 50%; background: var(--lime); }
+  ul.check li::after { content: ""; position: absolute; left: 1.15mm; top: 2.05mm; width: 1.2mm; height: .65mm; border-left: .45mm solid var(--deep); border-bottom: .45mm solid var(--deep); transform: rotate(-45deg); }
 
   .flow { margin-top: 4mm; position: relative; }
   .flow::before { content: ""; position: absolute; left: 7mm; top: 8mm; bottom: 8mm; width: .6mm; background: var(--line); }
   .step { display: flex; gap: 8mm; align-items: flex-start; padding: 8mm 0; position: relative; }
   .step .n { width: 14mm; height: 14mm; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex: none; border: 1.2mm solid #fff; box-shadow: 0 0 0 .5mm var(--line); }
-  .step:last-child .n { background: var(--accent); color: var(--navy); }
+  .step:last-child .n { background: var(--lime); color: var(--deep); }
   .step .who { font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-top: 1.5mm; }
   .step h3 { margin: 1mm 0 1mm; }
   .step p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
 
   .prices { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 4mm; }
   .price { border-radius: 4mm; padding: 14mm 9mm; border: 1px solid var(--line); }
-  .price.hl { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .price.hl { background: var(--deep); border-color: var(--deep); color: #fff; }
   .price .who { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
-  .price.hl .who { color: var(--accent); }
+  .price.hl .who { color: var(--lime); }
   .price .value { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: var(--navy); margin: 4mm 0 1mm; line-height: 1; }
   .price.hl .value { color: #fff; }
   .price .value small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
@@ -99,19 +99,15 @@
   .cta h3 { font-size: 18px; margin-bottom: 2mm; }
   .cta p { font-size: 13px; color: var(--muted); }
   .cta .contact { flex: none; text-align: right; font-size: 12.5px; line-height: 2.4; color: var(--navy); }
-  .cta .contact .line { border-bottom: 1px solid #E2CF9F; min-width: 62mm; display: block; text-align: left; color: var(--muted); }
+  .cta .contact .line { border-bottom: 1px solid #C9DDB8; min-width: 62mm; display: block; text-align: left; color: var(--muted); }
 </style>
 </head>
 <body>
 
-<!-- Marca provisória: substitua o <span class="logo"> pelo <img src="logo-pagcard.svg"> oficial -->
 
 <!-- ============ CAPA ============ -->
 <div class="page cover">
-  <span class="logo light">
-    <svg width="38" height="28" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
-    <span class="word">Pag<b>card</b></span>
-  </span>
+  <span class="logo-plate"><img src="logo-pagcard.png" alt="Pagcard"></span>
 
   <div class="kicker">Proposta comercial · Novo produto</div>
   <h1>Compra Coletiva de Combustíveis</h1>
@@ -126,10 +122,7 @@
 <!-- ============ VISÃO GERAL ============ -->
 <div class="page inner">
   <div class="header">
-    <span class="logo dark">
-      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
-      <span class="word" style="font-size:18px">Pag<b>card</b></span>
-    </span>
+    <img src="logo-pagcard.png" alt="Pagcard">
     <span class="tag">Compra Coletiva de Combustíveis</span>
   </div>
 
@@ -165,10 +158,7 @@
 <!-- ============ BENEFÍCIOS ============ -->
 <div class="page inner">
   <div class="header">
-    <span class="logo dark">
-      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
-      <span class="word" style="font-size:18px">Pag<b>card</b></span>
-    </span>
+    <img src="logo-pagcard.png" alt="Pagcard">
     <span class="tag">Compra Coletiva de Combustíveis</span>
   </div>
 
@@ -179,7 +169,7 @@
   <div class="cols">
     <div class="card">
       <div class="icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="11" height="18" rx="1.5"/><path d="M3 10h11"/><path d="M14 8l3.5 2.5V18a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04408B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="11" height="18" rx="1.5"/><path d="M3 10h11"/><path d="M14 8l3.5 2.5V18a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>
       </div>
       <div class="who">Para o posto parceiro</div>
       <h3>Mais fluxo, mais caixa, mais controle</h3>
@@ -192,7 +182,7 @@
 
     <div class="card navy">
       <div class="icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A300" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M9.5 9.5l5 5M14.5 9.5h.01M9.5 14.5h.01"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9CC730" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M9.5 9.5l5 5M14.5 9.5h.01M9.5 14.5h.01"/></svg>
       </div>
       <div class="who">Para o associado do app</div>
       <h3>Economia real no dia a dia</h3>
@@ -211,10 +201,7 @@
 <!-- ============ FLUXO ============ -->
 <div class="page inner">
   <div class="header">
-    <span class="logo dark">
-      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
-      <span class="word" style="font-size:18px">Pag<b>card</b></span>
-    </span>
+    <img src="logo-pagcard.png" alt="Pagcard">
     <span class="tag">Compra Coletiva de Combustíveis</span>
   </div>
 
@@ -236,10 +223,7 @@
 <!-- ============ CONDIÇÕES ============ -->
 <div class="page inner">
   <div class="header">
-    <span class="logo dark">
-      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
-      <span class="word" style="font-size:18px">Pag<b>card</b></span>
-    </span>
+    <img src="logo-pagcard.png" alt="Pagcard">
     <span class="tag">Compra Coletiva de Combustíveis</span>
   </div>
 

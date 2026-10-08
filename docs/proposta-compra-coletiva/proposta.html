@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Proposta Comercial – Compra Coletiva de Combustíveis</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --navy: #0B1F3A;
+    --navy-2: #13315C;
+    --accent: #F5A300;
+    --accent-soft: #FFF4DC;
+    --ink: #1C2533;
+    --muted: #5B6676;
+    --line: #E3E7EE;
+    --bg-soft: #F5F7FA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: auto; }
+
+  /* ===== Logo (provisória – substituir pela logo oficial da Pagcard) ===== */
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; }
+  .logo svg { display: block; }
+  .logo .word { font-size: 22px; }
+  .logo .word b { color: var(--accent); font-weight: 800; }
+  .logo.light { color: #fff; }
+  .logo.dark { color: var(--navy); }
+
+  /* ===== Capa ===== */
+  .cover { background: var(--navy); color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; }
+  .cover::before { content: ""; position: absolute; right: -60mm; top: -40mm; width: 170mm; height: 170mm; border-radius: 50%; background: var(--navy-2); }
+  .cover::after { content: ""; position: absolute; right: 22mm; top: 62mm; width: 56mm; height: 56mm; border-radius: 50%; border: 10mm solid var(--accent); opacity: .9; }
+  .cover > * { position: relative; z-index: 1; }
+  .cover .kicker { margin-top: auto; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .cover h1 { font-size: 50px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin: 6mm 0 6mm; max-width: 140mm; }
+  .cover .lead { font-size: 16px; line-height: 1.5; color: #C9D3E3; max-width: 120mm; }
+  .cover .foot { margin-top: 26mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.18); display: flex; justify-content: space-between; font-size: 11px; color: #9FB0C8; }
+
+  /* ===== Páginas internas ===== */
+  .inner { padding: 18mm 20mm 22mm; }
+  .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 6mm; border-bottom: 1px solid var(--line); margin-bottom: 12mm; }
+  .header .tag { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .footer { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 9.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 4mm; }
+  .eyebrow { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 3mm; }
+  h2 { font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--navy); font-weight: 800; margin-bottom: 6mm; }
+  h3 { font-size: 17px; color: var(--navy); font-weight: 700; margin-bottom: 2.5mm; }
+  p { font-size: 14px; line-height: 1.7; color: var(--ink); }
+  p + p { margin-top: 3.5mm; }
+  section + section { margin-top: 16mm; }
+
+  .mission { margin-top: 8mm; background: var(--navy); color: #fff; border-radius: 4mm; padding: 9mm 10mm; display: flex; gap: 8mm; align-items: flex-start; }
+  .mission .bar { width: 1.6mm; align-self: stretch; background: var(--accent); border-radius: 1mm; flex: none; }
+  .mission .label { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 2mm; }
+  .mission p { color: #fff; font-size: 18px; line-height: 1.5; font-weight: 500; }
+
+  .how { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; margin-top: 6mm; }
+  .stat { background: var(--bg-soft); border-radius: 3mm; padding: 7mm 6mm; }
+  .stat .num { font-size: 22px; white-space: nowrap; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+  .stat .num small { font-size: 13px; font-weight: 700; color: var(--muted); }
+  .stat .lbl { font-size: 12px; color: var(--muted); margin-top: 1.5mm; line-height: 1.45; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .card { border: 1px solid var(--line); border-radius: 4mm; padding: 11mm 8mm; min-height: 150mm; }
+  .card .icon { width: 11mm; height: 11mm; border-radius: 3mm; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 5mm; }
+  .card.navy { background: var(--navy); border-color: var(--navy); }
+  .card.navy h3, .card.navy li { color: #fff; }
+  .card.navy .icon { background: rgba(245,163,0,.18); }
+  .card .who { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); margin-bottom: 1.5mm; }
+  .card.navy .who { color: var(--accent); }
+  ul.check { list-style: none; margin-top: 4mm; }
+  ul.check li { position: relative; padding-left: 7mm; font-size: 14px; line-height: 1.55; margin-bottom: 5.5mm; }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: 1.2mm; width: 3.6mm; height: 3.6mm; border-radius: 50%; background: var(--accent); }
+  ul.check li::after { content: ""; position: absolute; left: 1.15mm; top: 2.05mm; width: 1.2mm; height: .65mm; border-left: .45mm solid var(--navy); border-bottom: .45mm solid var(--navy); transform: rotate(-45deg); }
+
+  .flow { margin-top: 4mm; position: relative; }
+  .flow::before { content: ""; position: absolute; left: 7mm; top: 8mm; bottom: 8mm; width: .6mm; background: var(--line); }
+  .step { display: flex; gap: 8mm; align-items: flex-start; padding: 8mm 0; position: relative; }
+  .step .n { width: 14mm; height: 14mm; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex: none; border: 1.2mm solid #fff; box-shadow: 0 0 0 .5mm var(--line); }
+  .step:last-child .n { background: var(--accent); color: var(--navy); }
+  .step .who { font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-top: 1.5mm; }
+  .step h3 { margin: 1mm 0 1mm; }
+  .step p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+  .prices { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 4mm; }
+  .price { border-radius: 4mm; padding: 14mm 9mm; border: 1px solid var(--line); }
+  .price.hl { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .price .who { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .price.hl .who { color: var(--accent); }
+  .price .value { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: var(--navy); margin: 4mm 0 1mm; line-height: 1; }
+  .price.hl .value { color: #fff; }
+  .price .value small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .price.hl .value small { color: #9FB0C8; }
+  .price .desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 3mm; }
+  .price.hl .desc { color: #C9D3E3; }
+
+  .cta { margin-top: 18mm; background: var(--accent-soft); border-radius: 4mm; padding: 9mm 10mm; display: flex; justify-content: space-between; align-items: center; gap: 8mm; }
+  .cta h3 { font-size: 18px; margin-bottom: 2mm; }
+  .cta p { font-size: 13px; color: var(--muted); }
+  .cta .contact { flex: none; text-align: right; font-size: 12.5px; line-height: 2.4; color: var(--navy); }
+  .cta .contact .line { border-bottom: 1px solid #E2CF9F; min-width: 62mm; display: block; text-align: left; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- Marca provisória: substitua o <span class="logo"> pelo <img src="logo-pagcard.svg"> oficial -->
+
+<!-- ============ CAPA ============ -->
+<div class="page cover">
+  <span class="logo light">
+    <svg width="38" height="28" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
+    <span class="word">Pag<b>card</b></span>
+  </span>
+
+  <div class="kicker">Proposta comercial · Novo produto</div>
+  <h1>Compra Coletiva de Combustíveis</h1>
+  <p class="lead">Economia real para o motorista. Previsibilidade de demanda e caixa antecipado para o posto parceiro.</p>
+
+  <div class="foot">
+    <span>Um produto do Grupo Pagcard</span>
+    <span>Documento confidencial · 2026</span>
+  </div>
+</div>
+
+<!-- ============ VISÃO GERAL ============ -->
+<div class="page inner">
+  <div class="header">
+    <span class="logo dark">
+      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
+      <span class="word" style="font-size:18px">Pag<b>card</b></span>
+    </span>
+    <span class="tag">Compra Coletiva de Combustíveis</span>
+  </div>
+
+  <section>
+    <div class="eyebrow">Visão geral</div>
+    <h2>Uma plataforma que conecta volume de abastecimento a postos competitivos</h2>
+    <p>Somos uma plataforma digital especializada em compra coletiva de combustíveis, criada para gerar economia real aos motoristas e previsibilidade de demanda aos postos parceiros.</p>
+    <p>Por meio de negociações privadas e sistêmicas, conectamos a necessidade de abastecimento em volume com postos que buscam competitividade e maior eficiência operacional.</p>
+
+    <div class="mission">
+      <div class="bar"></div>
+      <div>
+        <div class="label">Nossa missão</div>
+        <p>Viabilizar o acesso ao combustível com menor preço, fortalecendo a relação entre oferta e demanda no mercado de combustíveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Como funciona</div>
+    <h2 style="font-size:22px">Negociamos em volume. O associado abastece com desconto, todos os dias.</h2>
+    <p>Negociamos lotes de combustível com redes de postos selecionadas e repassamos as condições aos nossos associados na forma de descontos diários, disponíveis pelo aplicativo e por grupos privados.</p>
+    <div class="how">
+      <div class="stat"><div class="num">3.000–5.000 <small>litros</small></div><div class="lbl">Volume negociado por lote com a rede de postos</div></div>
+      <div class="stat"><div class="num">Diário</div><div class="lbl">Descontos oferecidos aos associados via app e grupos privados</div></div>
+      <div class="stat"><div class="num">Antecipado</div><div class="lbl">Pagamento ao posto antes do abastecimento</div></div>
+    </div>
+  </section>
+
+  <div class="footer"><span>Grupo Pagcard · Compra Coletiva de Combustíveis</span><span>02</span></div>
+</div>
+
+<!-- ============ BENEFÍCIOS ============ -->
+<div class="page inner">
+  <div class="header">
+    <span class="logo dark">
+      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
+      <span class="word" style="font-size:18px">Pag<b>card</b></span>
+    </span>
+    <span class="tag">Compra Coletiva de Combustíveis</span>
+  </div>
+
+  <div class="eyebrow">Benefícios</div>
+  <h2>Vantagens para os dois lados da bomba</h2>
+  <p style="margin-bottom:12mm; max-width:150mm">O modelo foi desenhado para que posto e motorista ganhem ao mesmo tempo: o posto vende mais com caixa garantido, e o motorista paga menos pelo combustível.</p>
+
+  <div class="cols">
+    <div class="card">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="11" height="18" rx="1.5"/><path d="M3 10h11"/><path d="M14 8l3.5 2.5V18a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>
+      </div>
+      <div class="who">Para o posto parceiro</div>
+      <h3>Mais fluxo, mais caixa, mais controle</h3>
+      <ul class="check">
+        <li><b>Recebimento antecipado</b> dos valores, melhorando o fluxo de caixa.</li>
+        <li><b>Previsibilidade de vendas</b> e aumento de fluxo em dias de pouco movimento.</li>
+        <li><b>Controle do fluxo nas bombas</b>, com planejamento da operação a partir do volume já vendido.</li>
+      </ul>
+    </div>
+
+    <div class="card navy">
+      <div class="icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A300" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M9.5 9.5l5 5M14.5 9.5h.01M9.5 14.5h.01"/></svg>
+      </div>
+      <div class="who">Para o associado do app</div>
+      <h3>Economia real no dia a dia</h3>
+      <ul class="check">
+        <li><b>Descontos reais</b> na compra de combustíveis.</li>
+        <li><b>Acesso diário a descontos</b> via aplicativo e grupos privados.</li>
+        <li><b>Clube de descontos</b> com mais de 30.000 empresas.</li>
+        <li><b>Telemedicina</b> integrada à assinatura.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer"><span>Grupo Pagcard · Compra Coletiva de Combustíveis</span><span>03</span></div>
+</div>
+
+<!-- ============ FLUXO ============ -->
+<div class="page inner">
+  <div class="header">
+    <span class="logo dark">
+      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
+      <span class="word" style="font-size:18px">Pag<b>card</b></span>
+    </span>
+    <span class="tag">Compra Coletiva de Combustíveis</span>
+  </div>
+
+  <div class="eyebrow">Fluxo da operação</div>
+  <h2>Do acordo com o posto ao abastecimento, em 5 etapas</h2>
+  <p style="max-width:150mm; margin-bottom:6mm">Um processo simples, em que a Pagcard cuida da negociação e do pagamento, e o motorista só precisa recarregar o cartão e abastecer.</p>
+
+  <div class="flow">
+    <div class="step"><div class="n">1</div><div><div class="who">Pagcard + Posto</div><h3>Negociação</h3><p>Negociamos descontos e volume com os postos parceiros para dias específicos.</p></div></div>
+    <div class="step"><div class="n">2</div><div><div class="who">Pagcard → Posto</div><h3>Pagamento antecipado</h3><p>Realizamos o pagamento ao posto antes do abastecimento, garantindo o caixa do parceiro.</p></div></div>
+    <div class="step"><div class="n">3</div><div><div class="who">Pagcard → Associados</div><h3>Comunicação da oferta</h3><p>Informamos aos motoristas associados as condições do dia pelo aplicativo e pelos grupos privados.</p></div></div>
+    <div class="step"><div class="n">4</div><div><div class="who">Associado</div><h3>Recarga do cartão</h3><p>O motorista associado faz a recarga no cartão Pagcard.</p></div></div>
+    <div class="step"><div class="n">5</div><div><div class="who">Associado → Posto</div><h3>Abastecimento</h3><p>O motorista paga no posto com o cartão ou o aplicativo Pagcard, direto no TEF.</p></div></div>
+  </div>
+
+  <div class="footer"><span>Grupo Pagcard · Compra Coletiva de Combustíveis</span><span>04</span></div>
+</div>
+
+<!-- ============ CONDIÇÕES ============ -->
+<div class="page inner">
+  <div class="header">
+    <span class="logo dark">
+      <svg width="30" height="22" viewBox="0 0 38 28"><rect x="0" y="0" width="38" height="28" rx="5" fill="#F5A300"/><rect x="0" y="7" width="38" height="5" fill="#0B1F3A"/><rect x="5" y="18" width="10" height="4" rx="1.5" fill="#0B1F3A"/></svg>
+      <span class="word" style="font-size:18px">Pag<b>card</b></span>
+    </span>
+    <span class="tag">Compra Coletiva de Combustíveis</span>
+  </div>
+
+  <div class="eyebrow">Condições comerciais</div>
+  <h2>Modelo simples e transparente</h2>
+  <p style="max-width:150mm; margin-bottom:10mm">Sem custos de adesão escondidos: o posto paga apenas sobre o que vende pela plataforma, e o associado tem uma mensalidade fixa.</p>
+
+  <div class="prices">
+    <div class="price">
+      <div class="who">Posto parceiro</div>
+      <div class="value">1% <small>sobre vendas</small></div>
+      <div class="desc">Taxa aplicada sobre o volume de vendas realizado por meio da plataforma.</div>
+    </div>
+    <div class="price hl">
+      <div class="who">Associado</div>
+      <div class="value">R$ 29,90 <small>/ mês</small></div>
+      <div class="desc">Acesso aos descontos diários em combustível, ao clube com mais de 30.000 empresas e à telemedicina.</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <h3>Vamos conversar?</h3>
+      <p>Fale com nosso time comercial para tornar-se um posto parceiro ou oferecer o benefício aos seus motoristas.</p>
+    </div>
+    <div class="contact">
+      <span class="line">Contato:</span>
+      <span class="line">Telefone / WhatsApp:</span>
+      <span class="line">E-mail:</span>
+    </div>
+  </div>
+
+  <div class="footer"><span>Grupo Pagcard · Compra Coletiva de Combustíveis</span><span>05</span></div>
+</div>
+
+</body>
+</html>

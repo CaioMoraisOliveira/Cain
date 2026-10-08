@@ -29,14 +29,14 @@
   .header img { height: 8mm; display: block; }
 
   /* ===== Capa ===== */
-  .cover { background: var(--deep); color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; }
-  .cover::before { content: ""; position: absolute; right: -60mm; top: -40mm; width: 170mm; height: 170mm; border-radius: 50%; background: var(--navy-2); }
-  .cover::after { content: ""; position: absolute; right: 22mm; top: 62mm; width: 56mm; height: 56mm; border-radius: 50%; border: 10mm solid var(--lime); opacity: .9; }
+  .cover { background: #2B4C97; color: #fff; padding: 22mm 20mm 18mm; display: flex; flex-direction: column; }
+  .cover .hero { position: absolute; top: 0; left: 0; width: 210mm; height: 156.8mm; object-fit: cover; z-index: 0; }
+  .cover::after { content: ""; position: absolute; left: 0; right: 0; top: 150mm; height: 8mm; background: linear-gradient(rgba(43,76,151,0), #2B4C97); z-index: 0; }
   .cover > * { position: relative; z-index: 1; }
   .cover .kicker { margin-top: auto; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); font-weight: 700; }
-  .cover h1 { font-size: 50px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin: 6mm 0 6mm; max-width: 140mm; }
-  .cover .lead { font-size: 16px; line-height: 1.5; color: #C9D3E3; max-width: 120mm; }
-  .cover .foot { margin-top: 26mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.18); display: flex; justify-content: space-between; font-size: 11px; color: #9FB0C8; }
+  .cover h1 { font-size: 46px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin: 4mm 0 5mm; max-width: 140mm; }
+  .cover .lead { font-size: 15px; line-height: 1.5; color: #DCE4F2; max-width: 120mm; }
+  .cover .foot { margin-top: 14mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.18); display: flex; justify-content: space-between; font-size: 11px; color: #B9C6DE; }
 
   /* ===== Páginas internas ===== */
   .inner { padding: 18mm 20mm 22mm; }
@@ -107,7 +107,7 @@
 
 <!-- ============ CAPA ============ -->
 <div class="page cover">
-  <span class="logo-plate"><img src="logo-pagcard.png" alt="Pagcard"></span>
+  <img class="hero" src="capa-pagcard.jpg" alt="Posto de combustível e app do Cartão Pagcard">
 
   <div class="kicker">Proposta comercial · Novo produto</div>
   <h1>Compra Coletiva de Combustíveis</h1>
